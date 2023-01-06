@@ -1,6 +1,5 @@
 import items from '../db.json'
 import { useState } from 'react';
-import { Select } from './Select';
   
 export default function Form (props) {
    
@@ -8,18 +7,17 @@ export default function Form (props) {
         full_name: '',
         email: '',
         birth_date:'',
-        country_of_origin: '',
+        country_of_origin: '', 
         terms_and_conditions: false
       })
     
     const handleInputChange = e => {
-      const {name, value} = e.target;
-      setValues( {...values, [name]: value});
-      
+       const {name, value} = e.target;
+       setValues( {...values, [name]: value});
+    
     }
       const handleSubmit = e => {
         e.preventDefault();
-        console.log(values)
       }
 
 return (
@@ -62,7 +60,14 @@ return (
                     />
                     <label className='label__form select__label'>
                         {items.items[3].label}
-                            <Select />
+                        <select 
+                            className='input__form' 
+                            onChange={handleInputChange}
+                            name={items.items[3].name}
+                            >
+                            {items.items[3].options.map( (item, i) =>
+                            (<option key={item.value} value={item.value}>{item.label}</option> ))
+                        }</select>
                     </label>
                     <label className='label__checkbox'>
                         {items.items[4].label}
