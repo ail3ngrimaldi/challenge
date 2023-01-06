@@ -1,8 +1,8 @@
 body {
-  margin: 0;
   font-family: 'ArialRounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--main-color);
 }
 
 code {
@@ -14,4 +14,12 @@ code {
   margin: 0;
   padding: 0;
   box-sizing: content-box;
+}
+
+:root {
+  --smaller-space: 1em;
+  --medium-space: 2em;
+  --bigger-space: 4em;
+  --main-color: hsl(0, 45%, 51%);
+  --secondary-color: hsl(0, 42%, 35%);
 }
