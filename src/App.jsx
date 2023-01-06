@@ -1,17 +1,34 @@
 import './App.css';
-import items from './db.json';
-
-const Select = () => 
-  <select className='input__form'>{
-    items.items[3].options.map( (i) => 
-      <option key={i.value}>{i.label}</option> )
-  }</select>;
+import { useState } from 'react';
+import Form from './components/Form';
 
 function App() {
+
+//   const [values, setValues] = useState ({
+//     full_name: '',
+//     email: '',
+//     birth_date:'',
+//     country_of_origin: '',
+//     terms_and_conditions: false
+//   })
+
+// const handleInputChange = e => {
+//   const {name, value} = e.target;
+//   setValues( {...values, [name]: value});
+  
+// }
+//   const handleSubmit = e => {
+//     e.preventDefault();   
+//   }
+
   return (
     <div className='App' >
-        <h1 className='title__form'>Encuesta</h1>
-            <form className='form'>
+        <Form 
+          // functionSubmit={handleSubmit}
+          // functionOnChange={handleInputChange}
+        />
+        {/* <h1 className='title__form'>Encuesta</h1>
+            <form className='form' onSubmit={handleSubmit}>
               <label className='label__form'>
                 {items.items[0].label}
               </label>
@@ -20,6 +37,7 @@ function App() {
                 type={items.items[0].type}
                 placeholder={items.items[0].label}
                 name={items.items[0].name}
+                onChange={handleInputChange}
                 required
               />
               <label className='label__form'>
@@ -30,6 +48,7 @@ function App() {
                  type={items.items[1].type}
                  placeholder={items.items[1].label}
                  name={items.items[1].name}
+                 onChange={handleInputChange}
                  required
               />
               <label className='label__form'>
@@ -40,6 +59,7 @@ function App() {
                   type={items.items[2].type}
                   placeholder={items.items[2].label}
                   name={items.items[2].name}
+                  onChange={handleInputChange}
                   required
               />
               <label className='label__form'>
@@ -52,6 +72,7 @@ function App() {
                   className='checkbox__form'
                   type={items.items[4].type}
                   name={items.items[4].name}
+                  onChange={handleInputChange}
                   required
                   />
               </label>
@@ -79,8 +100,8 @@ function App() {
           >
           </input>
           </>
-        )} */}
-        </form>
+        )} 
+        </form> */}
     </div>
   );
 }
