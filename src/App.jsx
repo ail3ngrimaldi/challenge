@@ -10,9 +10,11 @@ const Select = () =>
 function App() {
   return (
     <div className='App' >
-        <h1>Challenge</h1>
-        <h2>Interfaz de encuesta</h2> 
+        <h1 className='title__form'>Encuesta</h1>
             <form className='form'>
+              <label className='label__form'>
+                {items.items[0].label}
+              </label>
               <input
                 className='input__form name'
                 type={items.items[0].type}
@@ -20,6 +22,9 @@ function App() {
                 name={items.items[0].name}
                 required
               />
+              <label className='label__form'>
+                {items.items[1].label}
+              </label>
               <input
                  className='input__form mail'
                  type={items.items[1].type}
@@ -27,17 +32,24 @@ function App() {
                  name={items.items[1].name}
                  required
               />
+              <label className='label__form'>
+                {items.items[2].label}
+              </label>
               <input
                   className='input__form date'
                   type={items.items[2].type}
                   placeholder={items.items[2].label}
                   name={items.items[2].name}
                   required
-              /> 
+              />
+              <label className='label__form'>
+                {items.items[3].label}
+              </label>
               <Select/>
               <label className='label__checkbox'>
                 {items.items[4].label}
                 <input 
+                  className='checkbox__form'
                   type={items.items[4].type}
                   name={items.items[4].name}
                   required
@@ -46,10 +58,10 @@ function App() {
               <button 
                 className='button__form'
                 type={items.items[5].type}
-                placeholder={items.items[5].label}
-              />
-                
-        {/*Nice to acomplish pero probare otra forma y luego vere si se puede refactorizar*/}
+              >
+              {items.items[5].label}
+              </button>
+        {/*Nice to accomplish pero probare otra forma y luego vere si se puede refactorizar*/}
         {/* {items.items.map( i => 
           <> 
           {/*label no se está renderizando:

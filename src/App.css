@@ -1,31 +1,56 @@
 .App {
   text-align: center;
-  background-color: rgb(186, 73, 73);
   color: white;
   height: 100vh;
+  margin-bottom: var(--bigger-space);
+}
+
+.title__form{
+  padding-bottom: var(--smaller-space);
+  padding-top: var(--smaller-space);
 }
 
 .input__form {
-  margin: 1em;
+  margin: var(--smaller-space);
   border: none;
   border-radius: 5px;
-  padding: 1em;
+  padding: var(--smaller-space);
 }
 
 .label__checkbox {
-  margin: 2px;
+  margin: var(--smaller-space);
+  /* display:block;
+  float: none;
+  clear: both; */
+}
+
+.checkbox__form {
+  margin-left: var(--smaller-space);
 }
 
 .button__form {
-  width:50px;
-  height: 50px;
+  width: 60px;
+  height: 40px;
+  margin: auto;
+  box-shadow: 1px 1px 0px 1px gray;
+  color: var(--main-color);
+  background-color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: none;
+}
+
+.button__form:hover {
+  transform: scale(1.05);
+  font-weight: 600;
 }
 
 .form {
-  margin-bottom: 100px;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
-  margin-left: 2em;
-  margin-right: 2em;
+  margin-left:  var(--medium-space);
+  margin-right:  var(--medium-space);
 }
