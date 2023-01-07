@@ -1,34 +1,39 @@
 import items from '../db.json'
 import { useState } from 'react';
 import { db } from '../fb';
-import { addDoc, collection, setDoc } from "firebase/firestore"; 
+import { addDoc, collection } from "firebase/firestore"; 
   
-export default function Form (props) {
+export default function Form () {
+
 //Estado inicial de nuestra app:
     const [values, setValues] = useState ({
         full_name: '',
         email: '',
         birth_date: new Date,
         country_of_origin: '', 
-        terms_and_conditions: false,
+        terms_and_conditions: 'off',
       })
 
-//Función que toma el valor de los inputs y devuelve el nuevo estado
+//Función que toma el valor de los inputs y cambia el estado:
     const handleInputChange = e => {
        const {name, value} = e.target;
         setValues( {...values, [name]: value});
     }
+
       const handleSubmit = e => {
         e.preventDefault();
       }
 
+//Creamos una referencia a nuestra colleccion en la base de datos, la cual también creamos en esta linea de codigo:
       const formDataRef = collection(db, 'formData')
 
+//Creamos una función asíncrona que se resuelve una vez que se conecta a la DB y obtiene los datos que el usuario ingresa, ejecutándose cuando hacemos click en el botón de enviar: 
       const addDataToDb = async () => {
         await addDoc(formDataRef, {...values})
       }
+
+//Retornamos el formulario de la encuesta:
 return (
-    
     <>
         <h1 className='title__form'>Encuesta</h1>
             <form className='form' onSubmit={handleSubmit}>
@@ -71,6 +76,7 @@ return (
                             className='input__form' 
                             onChange={handleInputChange}
                             name={items.items[3].name}
+                            required
                             >
                             {items.items[3].options.map( (item, i) =>
                             (<option key={item.value} value={item.value}>{item.label}</option> ))
