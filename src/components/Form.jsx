@@ -1,25 +1,32 @@
 import items from '../db.json'
 import { useState } from 'react';
+import { db } from '../fb';
+import { addDoc, collection, setDoc } from "firebase/firestore"; 
   
 export default function Form (props) {
-   
+//Estado inicial de nuestra app:
     const [values, setValues] = useState ({
         full_name: '',
         email: '',
-        birth_date:'',
+        birth_date: new Date,
         country_of_origin: '', 
-        terms_and_conditions: false
+        terms_and_conditions: false,
       })
-    
+
+//Función que toma el valor de los inputs y devuelve el nuevo estado
     const handleInputChange = e => {
        const {name, value} = e.target;
-       setValues( {...values, [name]: value});
-    
+        setValues( {...values, [name]: value});
     }
       const handleSubmit = e => {
         e.preventDefault();
       }
 
+      const formDataRef = collection(db, 'formData')
+
+      const addDataToDb = async () => {
+        await addDoc(formDataRef, {...values})
+      }
 return (
     
     <>
@@ -82,6 +89,7 @@ return (
                     <button 
                         className='button__form'
                         type={items.items[5].type}
+                        onClick={addDataToDb}
                     >
                     {items.items[5].label}
                     </button>
