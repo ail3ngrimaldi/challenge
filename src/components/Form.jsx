@@ -1,7 +1,7 @@
 import items from '../db.json'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { db } from '../fb';
-import { addDoc, collection } from "firebase/firestore"; 
+import { addDoc, collection, getDocs } from "firebase/firestore"; 
   
 export default function Form () {
 
@@ -26,6 +26,16 @@ export default function Form () {
 
 //Creamos una referencia a nuestra colleccion en la base de datos, la cual también creamos en esta linea de codigo:
       const formDataRef = collection(db, 'formData')
+//Creamos una función dentro de useEffect, que se ejecuta cada vez que la página se renderiza y conecta con nuestra DB, para que podamos acceder a los datos que hay en ella:
+      useEffect(() => {
+        const getFormData = async () => {
+            const data = await getDocs(formDataRef);
+            setValues(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })
+            ));
+        };
+
+        getFormData();
+      }, []);
 
 //Creamos una función asíncrona que se resuelve una vez que se conecta a la DB y obtiene los datos que el usuario ingresa, ejecutándose cuando hacemos click en el botón de enviar: 
       const addDataToDb = async () => {

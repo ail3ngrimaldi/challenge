@@ -4,8 +4,7 @@ const ListData = () => {
   
     return (
     <>
-        <Form/>
-        <h1>List Data comming soon</h1>
+        <Form />
     </>
     );
 }
