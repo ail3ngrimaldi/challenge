@@ -1,5 +1,6 @@
-import {  initializeApp, getApp, getApps, firebase } from 'firebase/app';
+import {  initializeApp, getApp, getApps } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
+//import firebase from '@firebase/app-compat';
 
 const firebaseConfig = initializeApp({ 
   name: process.env.REACT_APP_NAME,
@@ -19,6 +20,5 @@ const firebaseConfig = initializeApp({
   firebaseApp = getApp(); 
 }
 
-firebase.firestore().settings({ experimentalForceLongPolling: true });
-
- export const db = getFirestore(firebaseApp);
+ export const db = getFirestore(firebaseApp)
+ 
