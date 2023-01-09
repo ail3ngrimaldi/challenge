@@ -1,10 +1,12 @@
-import Form from "./Form";
+import "../styles/ListData.css";
 
 const ListData = () => {
   
     return (
-    <>
-        <Form />
+    <>  
+        <div className='container__listdata'>
+            <h1 className='title__listdata'>Datos recavados</h1>
+        </div>
     </>
     );
 }

@@ -1,7 +1,8 @@
 import items from '../db.json'
 import { useState, useEffect } from 'react';
 import { db } from '../fb';
-import { addDoc, collection, getDocs } from "firebase/firestore"; 
+import { addDoc, collection, getDocs } from "firebase/firestore";
+import Modal from '../components/Modal';
   
 export default function Form () {
 
@@ -13,6 +14,7 @@ export default function Form () {
         country_of_origin: '', 
         terms_and_conditions: 'off',
       })
+    const [modalOpen, setModalOpen] = useState(false);
 
 //Función que toma el valor de los inputs y cambia el estado:
     const handleInputChange = e => {
@@ -42,11 +44,21 @@ export default function Form () {
         await addDoc(formDataRef, {...values})
       }
 
+      const openModal = () => {
+        setModalOpen(true);
+      }
+
+      const onClickFunctions = () => {
+        addDataToDb();
+        openModal();
+      }
+
 //Retornamos el formulario de la encuesta:
 return (
     <>
-        <h1 className='title__form'>Encuesta</h1>
+        
             <form className='form' onSubmit={handleSubmit}>
+                <h1 className='title__form'>Encuesta</h1>
                     <label className='label__form'>
                         {items.items[0].label}
                     </label>
@@ -105,10 +117,12 @@ return (
                     <button 
                         className='button__form'
                         type={items.items[5].type}
-                        onClick={addDataToDb}
+                        onClick={onClickFunctions}
                     >
                     {items.items[5].label}
                     </button>
+                    {modalOpen && <Modal setOpenModal={setModalOpen} />}
         </form>
+        {/* {Object.keys(values).map(x=> console.log(x))} */}
     </>
     )}
