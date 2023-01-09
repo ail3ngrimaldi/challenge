@@ -3,13 +3,13 @@ import { getFirestore } from 'firebase/firestore';
 //import firebase from '@firebase/app-compat';
 
 const firebaseConfig = initializeApp({ 
-  name: process.env.REACT_APP_NAME,
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID,
+  name: "dev project",
+  apiKey: "AIzaSyAA34doZVB365D0bpyz4qSrnaQM4SviLNg",
+  authDomain: "challenge-form-f0513.firebaseapp.com",
+  projectId: "challenge-form-f0513",
+  storageBucket: "challenge-form-f0513.appspot.com",
+  messagingSenderId: "627927299682",
+  appId: "1:627927299682:web:4b78c5bfbaac7be5b1033b"
  });
 
  let firebaseApp; 
