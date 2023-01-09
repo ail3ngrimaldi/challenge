@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Modal.css";
 
-function Modal({ setOpenModal }) {
+function Modal({ setOpenModal}) {
   return (
     <div className="modal__background">
       <div className="modal__container">

@@ -4,9 +4,14 @@
   margin-bottom: var(--bigger-space);
 }
 
+.form {
+  color: white;
+}
+
 .title__form{
   padding-bottom: var(--smaller-space);
   padding-top: var(--smaller-space);
+  color: white;
 }
 
 .input__form {
@@ -28,13 +33,13 @@
   width: 60px;
   height: 40px;
   margin: auto;
-  box-shadow: 1px 1px 0px 1px gray;
   color: var(--main-color);
   background-color: white;
   font-weight: 600;
   text-transform: uppercase;
   border-radius: 5px;
   border: none;
+  box-shadow: rgba(0, 0, 0, 0.287) 0px 1px 15px;
 }
 
 .button__form:hover {
