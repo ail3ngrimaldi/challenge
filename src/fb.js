@@ -1,4 +1,4 @@
-import {  initializeApp, getApp, getApps } from 'firebase/app';
+import {  initializeApp, getApp, getApps, firebase } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = initializeApp({ 
@@ -18,5 +18,7 @@ const firebaseConfig = initializeApp({
   } else { 
   firebaseApp = getApp(); 
 }
+
+firebase.firestore().settings({ experimentalForceLongPolling: true });
 
  export const db = getFirestore(firebaseApp);
