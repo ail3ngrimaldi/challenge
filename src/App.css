@@ -6,6 +6,12 @@
 
 .form {
   color: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  margin-left:  var(--medium-space);
+  margin-right:  var(--medium-space);
 }
 
 .title__form{
@@ -45,13 +51,4 @@
 .button__form:hover {
   transform: scale(1.05);
   font-weight: 600;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  margin-left:  var(--medium-space);
-  margin-right:  var(--medium-space);
 }

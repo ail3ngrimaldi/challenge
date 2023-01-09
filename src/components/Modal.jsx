@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Modal.css";
+import { Link } from 'react-router-dom';
 
 function Modal({ setOpenModal}) {
   return (
@@ -29,7 +30,9 @@ function Modal({ setOpenModal}) {
           >
             Cerrar
           </button>
-          <button>Ver datos</button>
+          <Link to='listdata'>
+            <button>Ver datos</button>
+          </Link>
         </div>
       </div>
     </div>

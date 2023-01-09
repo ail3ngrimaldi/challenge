@@ -56,8 +56,9 @@ export default function Form () {
 //Retornamos el formulario de la encuesta:
 return (
     <>
-        <h1 className='title__form'>Encuesta</h1>
+        
             <form className='form' onSubmit={handleSubmit}>
+                <h1 className='title__form'>Encuesta</h1>
                     <label className='label__form'>
                         {items.items[0].label}
                     </label>
@@ -122,5 +123,6 @@ return (
                     </button>
                     {modalOpen && <Modal setOpenModal={setModalOpen} />}
         </form>
+        {/* {Object.keys(values).map(x=> console.log(x))} */}
     </>
     )}

@@ -1,10 +1,9 @@
-import Form from "./Form";
 
 const ListData = () => {
   
     return (
-    <>
-        <Form />
+    <>  
+        <h1>Datos recavados</h1>
     </>
     );
 }
