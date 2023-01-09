@@ -14,10 +14,14 @@
   margin-right:  var(--medium-space);
 }
 
-.title__form{
+.title__form {
   padding-bottom: var(--smaller-space);
   padding-top: var(--smaller-space);
   color: white;
+}
+
+.label__checkbox {
+  margin: var(--smaller-space);
 }
 
 .input__form {
@@ -25,10 +29,6 @@
   border: none;
   border-radius: 5px;
   padding: var(--smaller-space);
-}
-
-.label__checkbox {
-  margin: var(--smaller-space);
 }
 
 .checkbox__form {
