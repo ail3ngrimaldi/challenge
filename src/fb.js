@@ -1,6 +1,5 @@
 import {  initializeApp, getApp, getApps } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-//import firebase from '@firebase/app-compat';
 
 const firebaseConfig = initializeApp({ 
   name: "dev project",
