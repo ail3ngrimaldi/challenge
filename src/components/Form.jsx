@@ -3,23 +3,29 @@ import { useState, useEffect } from 'react';
 import { db } from '../fb';
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import Modal from '../components/Modal';
-  
+
 export default function Form () {
 
 //Estado inicial de nuestra app:
-    const [values, setValues] = useState ({
+    const [values, setValues] = useState ([{
         full_name: '',
         email: '',
         birth_date: new Date,
         country_of_origin: '', 
         terms_and_conditions: 'off',
-      })
+    } ])
     const [modalOpen, setModalOpen] = useState(false);
 
 //Función que toma el valor de los inputs y cambia el estado:
     const handleInputChange = e => {
-       const {name, value} = e.target;
-        setValues( {...values, [name]: value});
+        setValues({
+            ...values,
+            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value, 
+            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value, 
+            [e.target.name]: e.target.value,
+        })
     }
 
       const handleSubmit = e => {
@@ -28,19 +34,10 @@ export default function Form () {
 
 //Creamos una referencia a nuestra colleccion en la base de datos, la cual también creamos en esta linea de codigo:
       const formDataRef = collection(db, 'formData')
-// //Creamos una función dentro de useEffect, que se ejecuta cada vez que la página se renderiza y conecta con nuestra DB, para que podamos acceder a los datos que hay en ella:
-//       useEffect(() => {
-//         const getFormData = async () => {
-//             const data = await getDocs(formDataRef);
-//             setValues(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })
-//             ));
-//         };
-
-//         getFormData();
-//       }, []);
 
 //Creamos una función asíncrona que se resuelve una vez que se conecta a la DB y obtiene los datos que el usuario ingresa, ejecutándose cuando hacemos click en el botón de enviar: 
       const addDataToDb = async () => {
+        // console.log([...values])
         await addDoc(formDataRef, {...values})
       }
 
