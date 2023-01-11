@@ -10,23 +10,15 @@ const ListData = () => {
     const formDataCollection = collection(db, 'formData');
     //Creamos una función dentro de useEffect, que se ejecuta cada vez que la página se renderiza y conecta con nuestra DB, para que podamos acceder a los datos que hay en ella:
     useEffect(() => {
-        const formDataCollection = collection(db, 'formData');
-        const getData = () => getDocs(formDataCollection)
-        getData().then(res => res.docs.map(persona => 
-        setData(({id: persona.id, ...persona.data()}))));
+        try { const formDataCollection = collection(db, 'formData');
+        // const getData = () => //getData()
+        getDocs(formDataCollection)
+        .then(res => res.docs.map(persona => 
+        setData((prevState => ([...prevState, persona.data()])))));
+    } catch(error) {
+        console.log('your code is not working bc:' + error)
+    }
     }, []);
-
-    //   useEffect(() => {
-    //     const formDataCollection = collection(db, 'formData');
-    //     const getData = async () => {
-    //     const respuesta = await getDocs(formDataCollection)
-    //     respuesta = await respuesta.docs.map(persona => ({id: persona.id, ...persona.data()})
-    //     );
-    //     console.log(respuesta)
-    //     }
-
-    //     getData()
-    // }, []);
   
     return (
     <>  

@@ -7,13 +7,7 @@ import Modal from '../components/Modal';
 export default function Form () {
 
 //Estado inicial de nuestra app:
-    const [values, setValues] = useState ([{
-        full_name: '',
-        email: '',
-        birth_date: new Date,
-        country_of_origin: '', 
-        terms_and_conditions: 'off',
-    } ])
+    const [values, setValues] = useState ([]);
     const [modalOpen, setModalOpen] = useState(false);
 
 //Función que toma el valor de los inputs y cambia el estado:
@@ -37,7 +31,6 @@ export default function Form () {
 
 //Creamos una función asíncrona que se resuelve una vez que se conecta a la DB y obtiene los datos que el usuario ingresa, ejecutándose cuando hacemos click en el botón de enviar: 
       const addDataToDb = async () => {
-        // console.log([...values])
         await addDoc(formDataRef, {...values})
       }
 
@@ -121,6 +114,5 @@ return (
                     </button>
                     {modalOpen && <Modal setOpenModal={setModalOpen} />}
         </form>
-        {/* {Object.keys(values).map(x=> console.log(x))} */}
     </>
     )}
