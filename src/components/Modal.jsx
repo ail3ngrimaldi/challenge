@@ -2,14 +2,14 @@ import React from "react";
 import "../styles/Modal.css";
 import { Link } from 'react-router-dom';
 
-function Modal({ setOpenModal}) {
+function Modal({ setModalOpen, closeModal}) {
   return (
     <div className="modal__background">
       <div className="modal__container">
         <div className="titleCloseBtn">
           <button
             onClick={() => {
-              setOpenModal(false);
+                setModalOpen(false);
             }}
           >
             X
@@ -24,7 +24,7 @@ function Modal({ setOpenModal}) {
         <div className="footer">
           <button
             onClick={() => {
-              setOpenModal(false);
+                closeModal(true);
             }}
             id="cancelBtn"
           >
