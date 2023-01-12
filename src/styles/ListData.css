@@ -4,4 +4,5 @@
 
 .title__listdata {
     text-align: center;
+    margin-top: var(--medium-space);
 }

@@ -1,6 +1,7 @@
 .table {
-    width: 100%;
+    width: 100w;
     border-collapse: collapse;
+    margin: 3em;
 }
 
 .table th,
