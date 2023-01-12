@@ -1,4 +1,5 @@
 import items from '../db.json'
+import '../styles/Form.css'
 import { useState } from 'react';
 import { db } from '../fb';
 import { addDoc, collection } from "firebase/firestore";
@@ -44,7 +45,7 @@ export default function Form () {
       
 //Retornamos el formulario de la encuesta:
 return (
-    <>
+    <div className='container__form'>
             <form className='form' onSubmit={handleSubmit}>
                 <h1 className='title__form'>Encuesta</h1>
                     <label className='label__form'>
@@ -95,7 +96,7 @@ return (
                     <label className='label__checkbox'>
                         {items.items[4].label}
                         <input 
-                        className='checkbox__form'
+                        className='input__form'
                         type={items.items[4].type}
                         name={items.items[4].name}
                         onChange={handleInputChange}
@@ -117,6 +118,6 @@ return (
     </Modal>    
     )}
 
-    </>
+</div>
     );
 }

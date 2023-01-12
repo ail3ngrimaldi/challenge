@@ -21,7 +21,7 @@ const ListData = () => {
     return (
     <>  
         <div className='container__listdata'>
-            <h1 className='title__listdata'>Datos recavados</h1>
+            <h1 className='title__listdata'>Datos</h1>
                <DataTable data={data} />
         </div>
     </>
