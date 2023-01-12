@@ -3,12 +3,12 @@ import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = initializeApp({ 
   name: "dev project",
-  apiKey: "AIzaSyAA34doZVB365D0bpyz4qSrnaQM4SviLNg",
-  authDomain: "challenge-form-f0513.firebaseapp.com",
-  projectId: "challenge-form-f0513",
-  storageBucket: "challenge-form-f0513.appspot.com",
-  messagingSenderId: "627927299682",
-  appId: "1:627927299682:web:4b78c5bfbaac7be5b1033b"
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID
  });
 
  let firebaseApp; 
