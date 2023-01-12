@@ -4,3 +4,6 @@
   margin-bottom: var(--bigger-space);
 }
 
+.arrow__positioned {
+  margin-left: var(--medium-space);
+}

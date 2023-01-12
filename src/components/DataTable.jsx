@@ -1,7 +1,10 @@
 import '../styles/DataTable.css';
+import GoBackButton from './GoBackButton';
 
 const DataTable = ({data}) => {
     return (
+        <>
+        <GoBackButton/>
         <table className='table'>
         <thead>
             <tr className='main__tablerow'>
@@ -24,6 +27,7 @@ const DataTable = ({data}) => {
             ))}
         </tbody>
     </table>
+    </>
     ) 
 }
 
