@@ -16,7 +16,6 @@ export default function Form () {
         setValues({
             ...values,
             [e.target.name]: e.target.value,
-         
         })
     }
 
@@ -26,7 +25,6 @@ export default function Form () {
         setIsFormValid(isFormValid);
         if(isFormValid) {
             addDataToDb();
-            setModalOpen(true);
         }
       }
 
@@ -35,7 +33,8 @@ export default function Form () {
 
 //Creamos una función asíncrona que se resuelve una vez que se conecta a la DB y obtiene los datos que el usuario ingresa, ejecutándose cuando hacemos click en el botón de enviar: 
       const addDataToDb = async () => {
-        await addDoc(formDataRef, {...values})
+        await addDoc(formDataRef, {...values});
+        setModalOpen(true);
       }
 
 //Función para cerrar el modal
@@ -106,7 +105,6 @@ return (
                     <button 
                         className='button__form'
                         type={items.items[5].type}
-                        onClick={addDataToDb}
                     >
                     {items.items[5].label}
                     </button>
