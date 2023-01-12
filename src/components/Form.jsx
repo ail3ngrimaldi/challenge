@@ -1,7 +1,7 @@
 import items from '../db.json'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { db } from '../fb';
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import Modal from '../components/Modal';
 
 export default function Form () {
@@ -9,21 +9,23 @@ export default function Form () {
 //Estado inicial de nuestra app:
     const [values, setValues] = useState ([]);
     const [modalOpen, setModalOpen] = useState(false);
+    const [isFormValid, setIsFormValid] = useState(false)
 
 //Función que toma el valor de los inputs y cambia el estado:
     const handleInputChange = e => {
         setValues({
             ...values,
             [e.target.name]: e.target.value,
-            [e.target.name]: e.target.value, 
-            [e.target.name]: e.target.value,
-            [e.target.name]: e.target.value, 
-            [e.target.name]: e.target.value,
         })
     }
 
       const handleSubmit = e => {
         e.preventDefault();
+        const isFormValid = Object.values(values).every(val => val !== '');
+        setIsFormValid(isFormValid);
+        if(isFormValid) {
+            addDataToDb();
+        }
       }
 
 //Creamos una referencia a nuestra colleccion en la base de datos, la cual también creamos en esta linea de codigo:
@@ -31,20 +33,15 @@ export default function Form () {
 
 //Creamos una función asíncrona que se resuelve una vez que se conecta a la DB y obtiene los datos que el usuario ingresa, ejecutándose cuando hacemos click en el botón de enviar: 
       const addDataToDb = async () => {
-        await addDoc(formDataRef, {...values})
-      }
-
-//Función para abrir la ventana modal
-      const openModal = () => {
+        await addDoc(formDataRef, {...values});
         setModalOpen(true);
       }
 
-//Función que ejecuta las dos funciones que necesitamos llamar cuando hacemos click en el botón "ENVIAR"
-      const onClickFunctions = () => {
-        addDataToDb();
-        openModal();
+//Función para cerrar el modal
+      const closeModal = () => {
+        setModalOpen(false);
       }
-
+      
 //Retornamos el formulario de la encuesta:
 return (
     <>
@@ -108,11 +105,18 @@ return (
                     <button 
                         className='button__form'
                         type={items.items[5].type}
-                        onClick={onClickFunctions}
                     >
                     {items.items[5].label}
                     </button>
-                    {modalOpen && <Modal setOpenModal={setModalOpen} />}
         </form>
-    </>
+        {modalOpen && (<Modal closeModal={closeModal} setModalOpen={setModalOpen} >
+    {isFormValid ?
+        <p>Muchas gracias por contestar la encuesta!</p> :
+        <p> Por favor, completa todos los campos del formulario</p>
+    }
+    </Modal>    
     )}
+
+    </>
+    );
+}
